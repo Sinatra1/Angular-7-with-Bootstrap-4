@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.LoginComponent.scss']
 })
 export class AppLoginComponent {
-  title = 'admin-broker';
+
 }

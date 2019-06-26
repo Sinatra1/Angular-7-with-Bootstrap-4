@@ -1,0 +1,34 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="menu__button-block">
+    <div ng-if="menuVm.authService.isAuth()" class="menu__button dropdown" uib-dropdown is-open="status.isopen">
+      <button id="menu-button" type="button" class="close" uib-dropdown-toggle>
+        <i class="glyphicon glyphicon-align-justify"></i>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="menu-button">
+        <li role="menuitem" class="min-sm-hide-force my-max-phone-display-expanded-table" ng-if="menuVm.authService.isAuth()">
+          <a ng-click="menuVm.loginService.logoutUser()">Sign out</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu__title-block">
+      <a href="#/" class="navbar-brand">Menu title</a>
+    </div>
+  </div>
+  <ul ng-if="menuVm.authService.isAuth()" class="nav navbar-nav navbar-right menu__button-logout">
+    <li>
+      <a href="" ng-click="menuVm.loginService.logoutUser()"><i class="glyphicon glyphicon-exit"></i> Sign out</a>
+    </li>
+  </ul>
+  <div class="menu__language dropdown" uib-dropdown ng-class="{'open': isOpenLanguageMenu}">
+    <a id="menu-language" class="menu__current-language" uib-dropdown-toggle ng-click="menuVm.showLanguageMenu();">
+      Title
+    </a>
+    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="menu-language">
+      <li role="menuitem" ng-repeat="language in menuVm.languageService.languages"
+          ng-click="menuVm.languageService.setCurrentLanguage(language.key)"
+          ng-class="{'active' : menuVm.isActiveLanguageMenuItem(language.key)}">
+        <a>Title</a>
+      </li>
+    </ul>
+  </div>
+</nav>
