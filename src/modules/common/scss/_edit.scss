@@ -1,0 +1,17 @@
+.my-images {
+    @include my-display-expanded-table;
+    malign-bottom: $my-padding-medium;
+    margin-left: -$my-padding-small;
+
+    .my-image-item {
+        @include my-inline-block;
+
+        img {
+            height: $my-xxxhdpi-image-height;
+            width: $my-xxxhdpi-image-width;
+            margin: $my-padding-small;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+}

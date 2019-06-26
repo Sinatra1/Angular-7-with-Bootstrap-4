@@ -1,0 +1,94 @@
+.my-create-button {
+    @media (min-width: $screen-tablet) {
+        margin-left: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+@mixin my-column-phone {
+    @media (max-width: $screen-phone) {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.my-column-id {
+    width: 80px;
+
+    @include my-column-phone;
+}
+
+.my-column-actions {
+    width: 150px;
+
+    @include my-column-phone;
+}
+
+.my-column-name {
+    max-width: 150px;
+    word-wrap: break-word;
+
+    @include my-column-phone;
+}
+
+$my-column-text-width: 200px;
+
+.my-column-text {
+    max-width: $my-column-text-width;
+    word-wrap: break-word;
+
+    @include my-column-phone;
+    
+    @media (max-width: $screen-phone) {
+        width: $my-column-text-width;
+    }
+}
+
+.my-column-huge-text {
+    max-width: 300px;
+    word-wrap: break-word;
+
+    @include my-column-phone;
+}
+
+.my-column-btn {
+    width: 50px;
+
+    @include my-column-phone;
+}
+
+.my-sort-column {
+    &.my-active {
+        .glyphicon-chevron-down:before, .glyphicon-chevron-up:before {
+            color: $red-color;
+        }
+    }
+
+    .glyphicon-chevron-down, .glyphicon-chevron-up {
+        margin-left: 10px;
+    }
+}
+
+.my-sort-column {
+    cursor: pointer;
+}
+
+.btn-block {
+    display: table;
+}
+
+.btn-block-icon {
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+
+    @media (max-width: $screen-phone) {
+        width: 100%;
+        height: auto;
+        padding-top: auto;
+    }
+}
+
+.my-glyphicon-arrow {
+    margin-left: $my-padding-medium;
+}

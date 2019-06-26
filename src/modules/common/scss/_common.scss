@@ -1,0 +1,340 @@
+.modal {
+    display: block;
+
+    .dropdown-menu {
+        position: relative;
+    }
+
+    .close {
+        color: $brand-primary;
+    }
+}
+
+.my-delete-close {
+    color: $red-color;
+
+    &:hover, &:focus {
+        color: $red-color;
+    }
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.alert-error {
+    background: none !important;
+    border: none !important;
+    padding: 15px 0 0 0 !important;
+}
+
+
+@media screen and (max-width: $screen-phone) {
+    .my-table-phone {
+        td, th {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.float-none {
+    float: none !important;
+}
+
+@mixin my-min-tablet-pull-right {
+    @media (min-width: $screen-tablet) {
+        float: right;
+    }
+}
+
+.my-min-tablet-pull-right {
+    @include my-min-tablet-pull-right;
+}
+
+@mixin my-min-tablet-pull-left {
+    @media (min-width: $screen-tablet) {
+        float: left;
+    }
+}
+
+.my-min-tablet-pull-left {
+    @include my-min-tablet-pull-left;
+}
+
+@mixin my-max-phone-float-none {
+    @media (max-width: $screen-phone) {
+        float: none;
+    }
+}
+
+.my-max-phone-float-none {
+    @include my-max-phone-float-none;
+}
+
+.align-center {
+    float: none !important;
+    margin: auto !important;
+}
+
+@media (min-width: $screen-phone) {
+    .navbar-right {
+        margin-right: 0;
+    }
+}
+
+@mixin my-inline-block {
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+}
+
+.my-inline-block {
+    @include my-inline-block;
+}
+
+@mixin my-min-tablet-inline-block {
+    @media (min-width: $screen-tablet) {
+        @include my-inline-block;
+    }
+}
+
+.my-min-tablet-inline-block {
+    @include my-min-tablet-inline-block;
+}
+
+@mixin my-display-table {
+    display: table;
+}
+
+.my-display-table {
+    @include my-display-table;
+}
+
+@mixin my-display-expanded-table {
+    @include my-display-table;
+    width: 100%;
+}
+
+.my-display-expanded-table {
+    @include my-display-expanded-table;
+}
+
+@mixin my-max-phone-display-expanded-table {
+    @media (max-width: $screen-phone) {
+        @include my-display-expanded-table;
+    }
+}
+
+.hide {
+    @include my-max-phone-display-expanded-table;
+}
+
+.my-max-phone-display-expanded-table {
+    @include my-max-phone-display-expanded-table;
+}
+
+@mixin my-display-block-force {
+    display: block !important;
+}
+
+.my-untihide {
+    @include my-display-block-force;
+}
+
+small {
+    color: $gray-darkest;
+}
+
+button.close,
+button.close:focus,
+a.close,
+a.close:focus {
+    opacity: 1;
+}
+
+.btn, button {
+    &,
+    &:active,
+        &.active {
+        &:focus,
+            &.focus {
+            outline: none;
+        }
+    }
+}
+
+.my-hide {
+    display: none;
+}
+
+.hide-force {
+    display: none !important;
+}
+
+@mixin my-max-phone-hide-force {
+    @media (max-width: $screen-phone) {
+        display: none !important;
+    }
+}
+
+.max-xs-hide-force {
+    @include my-max-phone-hide-force;
+}
+
+.max-phone-hide-force {
+    @include my-max-phone-hide-force;
+}
+
+@media (min-width: $screen-tablet) {
+
+    .min-sm-hide-force {
+        display: none !important;
+    }
+}
+
+@media (max-width: $screen-tablet) {
+    .navbar-nav {
+        margin: 0;
+    }
+}
+
+a, .my-pointer {
+    cursor: pointer;
+}
+
+$my-container-padding: 50px;
+$my-container-padding-tablet: 20px;
+
+.my-container {
+    padding-left: $my-container-padding;
+    padding-right: $my-container-padding;
+
+    @media (max-width: $screen-tablet) {
+        padding-left: $my-container-padding-tablet;
+        padding-right: $my-container-padding-tablet;
+        padding-bottom: $my-container-padding-tablet;
+    }
+}
+
+
+h1 {
+    @media (max-width: $screen-phone) {
+        font-size: $font-size-h1-xs;
+    }
+}
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.open {
+    > .dropdown-menu {
+        display: table;
+    }
+}
+
+:focus, :active {
+    outline: none;
+}
+
+.form-control[readonly] {
+    background-color: $white-color;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='checkbox'], label ~ input[type='checkbox']  {
+    cursor: pointer;
+}
+
+.btn-block-small {
+    @media (min-width: $screen-tablet) {
+        min-width: 100px;
+    }
+
+    @media (max-width: $screen-phone) {
+        width: 100%;
+    }
+}
+
+.btn-group {
+    @media (max-width: $screen-phone) {
+        width: 100%;
+    }
+}
+
+.breadcrumb > li{
+    font-size: $h4-font-size;
+}
+
+.my-pre-text {
+    white-space: pre-line;
+}
+
+.my-table-striped {
+    &.table > thead > tr > th,
+    &.table > thead > tr > td,
+    &.table > tbody > tr > th,
+    &.table > tbody > tr > td,
+    &.table > tfoot > tr > th,
+    &.table > tfoot > tr > td,
+    &.table > thead > tr:first-child > th,
+    &.table > thead > tr:first-child > td,
+    &.table > tbody > tr:first-child > th,
+    &.table > tbody > tr:first-child > td,
+    &.table > tfoot > tr:first-child > th,
+    &.table > tfoot > tr:first-child > td {
+        border-top: 0;
+    }
+}
+
+.table.table-striped {
+    margin-bottom: 0;
+
+    &.white-rows {
+        td {
+            background-color: $white-color !important;
+        }
+    }
+}
+
+.modal-body {
+    @media (max-width: $screen-phone) {
+        padding: 0;
+    }
+}
+
+.modal-dialog {
+    display: table;
+}
+
+.my-modal-content-huge {
+    width: 1200px;
+
+    @media screen and (max-width: $screen-tablet) {
+        width: 100%;
+    }
+}
+
+.my-href {
+    color: $red-color;
+
+    &:focus, &:hover {
+        color: $red-color;
+    }
+}

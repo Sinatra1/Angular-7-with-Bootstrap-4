@@ -1,0 +1,65 @@
+$brand-primary: #333333;
+$gray-light: #f2f2f2 !default;
+$border-radius-base: 0 !default;
+$brand-success: #47b716 !default;
+$gray-darker: #9d9d9d !default;
+$gray-darkest: #868686 !default;
+$blue-color: #37568c;
+$red-color: #0066cc;
+$green-color: #419641;
+$font-size-h1-xs: 29px;
+$white-color: white;
+$success-color: #b7d7a6;
+
+$text-color: black;
+$input-color: $text-color;
+$my-padding-big: 30px;
+$my-padding-medium: 10px;
+$my-padding-small: 5px;
+$my-padding-label: 7px;
+$my-xxxhdpi-image-height: 312px;
+$my-xxxhdpi-image-width: 209px;
+$my-lg-image-height: 150px;
+$my-lg-image-width: 100px;
+
+
+$navbar-default-color: $blue-color !default;
+$navbar-default-bg: $blue-color !default;
+$navbar-default-border: $blue-color !default;
+$navbar-margin-bottom: 0 !default;
+$nav-pills-active-link-hover-bg: #e2e2e2 !default;
+$nav-pills-active-link-hover-color: $brand-primary;
+$navbar-height: 60px !default;
+$navbar-default-brand-color: white !default;
+$navbar-default-brand-hover-color: darken($navbar-default-brand-color, 10%) !default;
+$navbar-default-link-color: $navbar-default-brand-color;
+$navbar-default-link-hover-color: $navbar-default-brand-hover-color;
+
+$btn-primary-bg: $red-color;
+$btn-primary-border: $red-color;
+
+$btn-success-bg: $brand-primary;
+$btn-success-border: $brand-primary;
+
+$btn-info-color: $white-color;
+$btn-info-bg: $blue-color;
+$btn-info-border: darken($btn-info-bg, 5%) !default;
+
+$bootstrap-sass-asset-helper: false;
+$icon-font-path: "../../assets/fonts/" !default;
+
+$close-color: $white-color;
+$close-text-shadow: $brand-primary;
+
+$breadcrumb-active-color: $brand-primary;
+
+$dropdown-link-active-bg: $red-color;
+
+$screen-phone: map-get($grid-breakpoints, "xs") !default;
+$screen-tablet: map-get($grid-breakpoints, "sm") !default;
+$screen-desktop: map-get($grid-breakpoints, "md") !default;
+
+@mixin tab-focus() {
+  outline: 0 !important;
+  outline-offset: -2px;
+}

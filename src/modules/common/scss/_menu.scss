@@ -1,0 +1,67 @@
+.navbar {
+    $menu-button-logout-width: 90px;
+
+    .menu__button-block {
+        $menu-button-width: 50px;
+        @include my-min-tablet-pull-left;
+        @include my-max-phone-float-none;
+
+        width: calc(100% - 165px);
+
+        @media (max-width: $screen-phone) {
+            width: 100%;
+        }
+
+        .menu__button {
+            @include my-inline-block;
+            width: $menu-button-width;
+            padding-top: 12px;
+
+            .glyphicon-align-justify {
+                font-size: 30px;
+            }
+        }
+
+        .menu__title-block {
+            @include my-inline-block;
+
+            width: calc(100% - #{$menu-button-width} - 5px);
+
+            img {
+                width: 70px;
+                margin-top: 9px;
+                float: left;
+                margin-left: 15px;
+            }
+        }
+    }
+
+    .menu__button-logout {
+        @include my-min-tablet-pull-right;
+        @include my-max-phone-float-none;
+        @include my-max-phone-hide-force;
+
+        width: $menu-button-logout-width;
+    }
+
+    .menu__language {
+        @include my-inline-block;
+        
+        float: right;
+        margin-top: 20px;
+
+        .menu__current-language {
+            color: $white-color;
+            padding: $my-padding-medium;
+            margin-left: -40px;
+            
+            &:focus, &:hover {
+                text-decoration: none;
+            }
+        }
+        
+        .dropdown-menu {
+            margin-left: -145px;
+        }
+    }
+}
