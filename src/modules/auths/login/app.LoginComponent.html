@@ -1,0 +1,57 @@
+<div class="col-md-4 col-sm-12 align-center">
+  <h1><!--{{languageService.getString('sign_in')}}--></h1>
+
+  <form role="form" name="authForm" ng-submit="loginUser(user);">
+    <div class="form-group" ng-class="{error: authForm.login.$invalid}">
+      <label><!--{{languageService.getString('login')}}--></label>
+      <div>
+        <input name="login"
+               ng-model="user.login"
+               type="text"
+               ng-keyup="loginError = authForm.login.$dirty && !user.login"
+               ng-blur="showLoginError = loginError"
+               class="form-control"
+               placeholder=""
+               required/>
+        <div ng-show="showLoginError" class="alert alert-danger alert-error">
+          <!--{{menuVm.languageService.getString('login_required_error')}}-->
+        </div>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{error: authForm.password.$invalid}">
+      <label><!--{{menuVm.languageService.getString('password')}}--></label>
+      <div>
+        <input name="password"
+               ng-model="user.password"
+               type="password"
+               ng-change="validatePassword(authForm)"
+               ng-keyup="validatePassword(authForm)"
+               ng-blur="showPasswordError = passwordError"
+               class="form-control"
+               placeholder=""
+               required/>
+        <div ng-show="showPasswordError" class="alert alert-danger alert-error">
+          <!--{{menuVm.languageService.getString('password_required_error')}}-->
+        </div>
+      </div>
+    </div>
+    <div ng-show="loginErrorMessage && !showLoginError && !showPasswordError" class="alert alert-danger alert-error">
+      <!--{{menuVm.languageService.getString('login_error')}}-->
+    </div>
+    <div>
+      <div class="btn-group form-group">
+        <button ng-disabled="!isValidForm() || isInProccess"
+                type="submit" class="btn btn-primary btn-block btn-block-small">
+          <!--{{languageService.getString('sign_in')}}-->
+        </button>
+      </div>
+      <div class="btn-group form-group">
+        <a class="btn btn-default btn-block btn-block-small" href="/#/restore">
+          <!--{{languageService.getString('restore_password')}}-->
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
