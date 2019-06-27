@@ -1,34 +1,42 @@
 <div class="col-md-4 col-sm-12 align-center">
   <h1>Sign in</h1>
 
-  <form  #loginForm="ngForm">
+  <form #loginForm="ngForm">
     <div class="form-group">
       <label for="login">Login</label>
       <div>
         <input id="login"
                name="login"
                class="form-control"
-               minlength="minLength"
+               minlength="{{minLength}}"
                [(ngModel)]="user.login"
                #login="ngModel"
                type="text"
                placeholder="Login"
+               autocomplete="off"
                required/>
-        <div  *ngIf="login.invalid && (login.dirty || login.touched)" class="alert alert-danger alert-error">
-          Login required error
+        <div *ngIf="login.invalid && (login.dirty || login.touched)" class="alert alert-danger alert-error">
+          <div *ngIf="login.errors.required">Login required error</div>
+          <div *ngIf="login.errors.minlength">Login min length is {{minLength}}</div>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label>Password</label>
+      <label for="password">Password</label>
       <div>
-        <input
-               type="password"
+        <input id="password"
+               name="password"
                class="form-control"
+               minlength="{{minLength}}"
+               [(ngModel)]="user.password"
+               #password="ngModel"
+               type="password"
                placeholder="Password"
+               autocomplete="off"
                required/>
-        <div class="alert alert-danger alert-error">
-          Password required error
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger alert-error">
+          <div *ngIf="password.errors.required">Password required error</div>
+          <div *ngIf="password.errors.minlength">Password min length is {{minLength}}</div>
         </div>
       </div>
     </div>
@@ -37,7 +45,7 @@
     </div>
     <div>
       <div class="btn-group form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-block-small">
+        <button [disabled]="!loginForm.form.valid" type="submit" class="btn btn-primary btn-block btn-block-small">
           Sign in
         </button>
       </div>
