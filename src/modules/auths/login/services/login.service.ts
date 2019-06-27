@@ -3,6 +3,7 @@ import {User} from '../../../users/models/user';
 import {HttpClient} from '@angular/common/http';
 import {ApiService} from '../../../common/services/api.service';
 import {Promise} from 'q';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class LoginService {
   constructor() {
   }
 
-  login(user: User): Promise {
+  login(user: User): Observable<any> {
     return this.apiService.post(this.urlHash, user);
   }
 }

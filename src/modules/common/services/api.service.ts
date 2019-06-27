@@ -3,6 +3,7 @@ import {AppConfig} from '../../../app/app-config';
 import {HttpClient} from '@angular/common/http';
 import {encodeUriQuery} from '@angular/router/src/url_tree';
 import {Promise} from 'q';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +17,18 @@ export class ApiService {
   constructor() {
   }
 
-  public post(method: string, data): Promise {
+  public post(method: string, data): Observable<any> {
     return this.request(ApiService.POST, method, data);
   }
 
-  private request(httpMethod: string, method: string, data): Promise {
+  private request(httpMethod: string, method: string, data): Observable<any> {
     const url = this.getUrl(httpMethod, method, data);
-    return new Promise((resolve, reject) => {
-      this.http.request(httpMethod, url, {
-        params: data,
-        withCredentials: true
-      }).subscribe(
-        (successData) => resolve(successData), (error) => reject(error)
-      );
+    const req: Observable<any> = this.http.request(httpMethod, url, {
+      params: data,
+      withCredentials: true
     });
+    req.subscribe((value => {}), (error => {}));
+    return req;
   }
 
   private getUrl(httpMethod: string, method: string, data): string {
@@ -37,8 +36,8 @@ export class ApiService {
 
     url += method;
 
-    if (method === ApiService.GET || method === ApiService.DELETE) {
-      let delimiter: String = '?';
+    if (httpMethod === ApiService.GET || httpMethod === ApiService.DELETE) {
+      let delimiter = '?';
       for (const [key, value] of data) {
         if (url.indexOf(delimiter) !== -1) {
           delimiter = '&';
