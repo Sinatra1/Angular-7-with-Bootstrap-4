@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {User} from 'user';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,10 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./app.LoginComponent.scss']
 })
 export class AppLoginComponent {
-  checkoutForm;
-  user = {login: '', password: ''};
+  minLength = 3;
+  user
   constructor(
-    private formBuilder: FormBuilder
   ) {
-    this.checkoutForm = this.formBuilder.group(this.user);
+    this.user = new User('', '');
   }
 }

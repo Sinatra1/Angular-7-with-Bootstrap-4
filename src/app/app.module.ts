@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppLoginComponent } from '../modules/auths/login/app.LoginComponent';
 import { AppMenuComponent } from '../modules/auths/menu/app.MenuComponent';
@@ -15,7 +15,7 @@ import { AppMenuComponent } from '../modules/auths/menu/app.MenuComponent';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    FormsModule,
     NgbModule
   ],
   providers: [],

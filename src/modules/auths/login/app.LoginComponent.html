@@ -1,16 +1,20 @@
 <div class="col-md-4 col-sm-12 align-center">
   <h1>Sign in</h1>
 
-  <form [formGroup]="checkoutForm">
+  <form  #loginForm="ngForm">
     <div class="form-group">
-      <label>Login</label>
+      <label for="login">Login</label>
       <div>
-        <input
-               type="text"
+        <input id="login"
+               name="login"
                class="form-control"
+               minlength="minLength"
+               [(ngModel)]="user.login"
+               #login="ngModel"
+               type="text"
                placeholder="Login"
                required/>
-        <div class="alert alert-danger alert-error">
+        <div  *ngIf="login.invalid && (login.dirty || login.touched)" class="alert alert-danger alert-error">
           Login required error
         </div>
       </div>
