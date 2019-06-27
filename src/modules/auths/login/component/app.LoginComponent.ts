@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {User} from './user';
+import {User} from '../../../users/models/user';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {User} from './user';
 export class AppLoginComponent {
   minLength = 3;
   user
+  private loginService: LoginService;
   constructor(
   ) {
     this.user = new User('', '');
