@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-12 align-center">
   <h1>Sign in</h1>
 
-  <form #loginForm="ngForm">
+  <form #loginForm="ngForm" (ngSubmit)="login()">
     <div class="form-group">
       <label for="login">Login</label>
       <div>
@@ -40,8 +40,11 @@
         </div>
       </div>
     </div>
-    <div class="alert alert-danger alert-error">
+    <div *ngIf="loginError" class="alert alert-danger alert-error">
       Login error
+    </div>
+    <div *ngIf="loginSuccess" class="alert alert-success alert-error">
+      Login success
     </div>
     <div>
       <div class="btn-group form-group">

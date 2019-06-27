@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AppConfig} from '../../../app/app-config';
 import {HttpClient} from '@angular/common/http';
-import {encodeUriQuery} from '@angular/router/src/url_tree';
-import {Promise} from 'q';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -12,9 +10,8 @@ export class ApiService {
   private static POST = 'POST';
   private static GET = 'GET';
   private static DELETE = 'DELETE';
-  private http: HttpClient;
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   public post(method: string, data): Observable<any> {
@@ -43,7 +40,7 @@ export class ApiService {
           delimiter = '&';
         }
 
-        url += delimiter + key + '=' + encodeUriQuery(data[key]);
+        url += delimiter + key + '=' + encodeURIComponent(data[key]);
       }
 
       return url;

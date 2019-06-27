@@ -10,9 +10,18 @@ import { LoginService } from '../services/login.service';
 export class AppLoginComponent {
   minLength = 3;
   user
-  private loginService: LoginService;
-  constructor(
-  ) {
+  loginError = false;
+  loginSuccess = false;
+  constructor(private loginService: LoginService) {
     this.user = new User('', '');
+  }
+  public login() {
+    this.loginError = false;
+    this.loginSuccess = false;
+    this.loginService.login(this.user).subscribe((value => {
+      this.loginSuccess = true;
+    }), (error => {
+      this.loginError = true;
+    }));
   }
 }

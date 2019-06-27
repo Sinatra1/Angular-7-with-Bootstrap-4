@@ -9,12 +9,11 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiService: ApiService;
   private urlHash = 'auths';
-  constructor() {
+  constructor(private apiService: ApiService) {
   }
 
-  login(user: User): Observable<any> {
+  public login(user: User): Observable<any> {
     return this.apiService.post(this.urlHash, user);
   }
 }
