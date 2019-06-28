@@ -7,11 +7,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppLoginComponent } from '../modules/auths/login/component/app.LoginComponent';
 import { AppMenuComponent } from '../modules/auths/menu/app.MenuComponent';
 import { HttpClientModule } from '@angular/common/http';
+import { EditUserComponent } from '../modules/users/edit/edit-user.component';
 
 @NgModule({
   declarations: [
     AppLoginComponent,
-    AppMenuComponent
+    AppMenuComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

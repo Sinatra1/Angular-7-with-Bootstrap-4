@@ -33,6 +33,7 @@ export class ApiService {
     }));
     return this.observableData;
   }
+
   private getOptions(httpMethod: string, data) {
     const options = {body: null, params: null, withCredentials: true};
     if (httpMethod === ApiService.GET || httpMethod === ApiService.DELETE) {

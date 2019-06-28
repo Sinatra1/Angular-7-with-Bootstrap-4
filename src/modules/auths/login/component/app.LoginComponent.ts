@@ -13,7 +13,7 @@ export class AppLoginComponent {
   loginError = false;
   loginSuccess = false;
   constructor(private loginService: LoginService) {
-    this.user = new User('', '');
+    this.user = new User();
   }
   onLogin() {
     this.loginError = false;
