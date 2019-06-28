@@ -8,12 +8,14 @@ import { AppLoginComponent } from '../modules/auths/login/component/app.LoginCom
 import { AppMenuComponent } from '../modules/auths/menu/app.MenuComponent';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from '../modules/users/edit/edit-user.component';
+import { RegComponent } from '../modules/auths/reg/component/reg.component';
 
 @NgModule({
   declarations: [
     AppMenuComponent,
     AppLoginComponent,
-    EditUserComponent
+    EditUserComponent,
+    RegComponent
   ],
   imports: [
     BrowserModule,
@@ -25,11 +27,12 @@ import { EditUserComponent } from '../modules/users/edit/edit-user.component';
   exports: [
     AppMenuComponent,
     AppLoginComponent,
-    EditUserComponent
+    EditUserComponent,
+    RegComponent
   ],
   providers: [],
   bootstrap: [
-    AppLoginComponent
+    AppMenuComponent
   ]
 })
 export class AppModule { }
