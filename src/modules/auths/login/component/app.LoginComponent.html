@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-12 align-center">
   <h1>Sign in</h1>
 
-  <form #loginForm="ngForm" (ngSubmit)="login()">
+  <form #loginForm="ngForm" (ngSubmit)="onLogin()">
     <div class="form-group">
       <label for="login">Login</label>
       <div>
@@ -9,7 +9,7 @@
                name="login"
                class="form-control"
                minlength="{{minLength}}"
-               [(ngModel)]="user.login"
+               [(ngModel)]="user.username"
                #login="ngModel"
                type="text"
                placeholder="Login"

@@ -15,7 +15,7 @@ export class AppLoginComponent {
   constructor(private loginService: LoginService) {
     this.user = new User('', '');
   }
-  public login() {
+  onLogin() {
     this.loginError = false;
     this.loginSuccess = false;
     this.loginService.login(this.user).subscribe((value => {
