@@ -11,8 +11,8 @@ import { EditUserComponent } from '../modules/users/edit/edit-user.component';
 
 @NgModule({
   declarations: [
-    AppLoginComponent,
     AppMenuComponent,
+    AppLoginComponent,
     EditUserComponent
   ],
   imports: [
@@ -22,10 +22,14 @@ import { EditUserComponent } from '../modules/users/edit/edit-user.component';
     FormsModule,
     NgbModule
   ],
+  exports: [
+    AppMenuComponent,
+    AppLoginComponent,
+    EditUserComponent
+  ],
   providers: [],
   bootstrap: [
-    AppLoginComponent,
-    AppMenuComponent
+    AppLoginComponent
   ]
 })
 export class AppModule { }
