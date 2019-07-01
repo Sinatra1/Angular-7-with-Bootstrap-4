@@ -23,6 +23,33 @@ export class AuthService {
     }
 
     this.setSession(session);
+
+    /*TODO: if (service.authorized !== true) {
+      $rootScope.$emit('Authorized');
+    }*/
+  }
+
+  public setUnauthorizedState() {
+    this.removeSession();
+
+    //TODO: $rootScope.$emit('Unauthorized');
+
+    top.location.href = AppConfig.PRELOGIN;
+  }
+
+  public isAuth(): boolean {
+    if (this.authorized === true) {
+      return true;
+    }
+
+    if (this.getSession().access_token) {
+      this.authorized = true;
+      return this.authorized;
+    }
+
+    this.authorized = false;
+
+    return this.authorized;
   }
 
   protected setSession(session: Session) {
@@ -34,11 +61,11 @@ export class AuthService {
     this.authorized = true;
 
     const expireDate = new Date();
-    expireDate.time = (expireDate.time + AppConfig.TOKEN_EXPIRES_DELAY_SEC);
+    expireDate.setTime(expireDate.getTime() + AppConfig.TOKEN_EXPIRES_DELAY_SEC);
     this.cookieService.set(AuthService.SESSION_KEY_NAME, JSON.stringify(this.session), expireDate);
   }
 
-  public removeSession(): boolean {
+  protected removeSession(): boolean {
     this.session = new Session();
     this.authorized = false;
 
@@ -47,7 +74,7 @@ export class AuthService {
     return true;
   }
 
-  public getSession(): Session {
+  protected getSession(): Session {
     if (this.session.access_token) {
       this.authorized = true;
       return this.session;
