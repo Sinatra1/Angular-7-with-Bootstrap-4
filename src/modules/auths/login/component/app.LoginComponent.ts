@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../../users/models/user';
 import { LoginService } from '../services/login.service';
 import {nfapply} from 'q';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppLoginComponent implements OnInit {
   public loginError = false;
   public loginSuccess = false;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private authService: AuthService) {
   }
 
   public ngOnInit(): void {
@@ -25,7 +26,8 @@ export class AppLoginComponent implements OnInit {
     this.loginError = false;
     this.loginSuccess = false;
 
-    this.loginService.login(this.user).subscribe((value => {
+    this.loginService.login(this.user).subscribe((session => {
+      this.authService.setAuthorizedState(session);
       this.loginSuccess = true;
     }), (error => {
       this.loginError = true;

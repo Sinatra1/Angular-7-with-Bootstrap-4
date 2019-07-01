@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from '../modules/users/edit/edit-user.component';
 import { RegComponent } from '../modules/auths/reg/component/reg.component';
 import { PasswordComplexDirective } from '../modules/users/directives/password-complex.directive';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { PasswordComplexDirective } from '../modules/users/directives/password-c
     EditUserComponent,
     RegComponent
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [
     AppMenuComponent
   ]
