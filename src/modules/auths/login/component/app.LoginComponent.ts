@@ -8,10 +8,11 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./app.LoginComponent.scss']
 })
 export class AppLoginComponent implements OnInit {
-  minLength = 3;
-  user
-  loginError = false;
-  loginSuccess = false;
+  public minLength = 3;
+  public user
+  public loginError = false;
+  public loginSuccess = false;
+
   constructor(private loginService: LoginService) {
   }
 

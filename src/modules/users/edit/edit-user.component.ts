@@ -8,12 +8,12 @@ import {UserService} from '../services/user.service';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
+  public minLength = 3;
   public currentItem: User;
   public showErrorMessage = false;
   public showSuccessMessage = false;
 
   constructor(private userService: UserService) {
-    console.log(userService);
   }
 
   ngOnInit() {
@@ -21,7 +21,6 @@ export class EditUserComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.userService);
     const request = this.userService.create(this.currentItem);
 
     if (!request) {

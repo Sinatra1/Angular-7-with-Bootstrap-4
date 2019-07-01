@@ -8,12 +8,12 @@
         <input id="login"
                name="login"
                class="form-control"
-               minlength="{{minLength}}"
                [(ngModel)]="user.username"
                #login="ngModel"
                type="text"
                placeholder="Login"
                autocomplete="off"
+               minlength="{{minLength}}"
                required/>
         <div *ngIf="login.invalid && (login.dirty || login.touched)" class="alert alert-danger alert-error">
           <div *ngIf="login.errors.required">Login required error</div>
@@ -27,12 +27,12 @@
         <input id="password"
                name="password"
                class="form-control"
-               minlength="{{minLength}}"
                [(ngModel)]="user.password"
                #password="ngModel"
                type="password"
                placeholder="Password"
                autocomplete="off"
+               minlength="{{minLength}}"
                required/>
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger alert-error">
           <div *ngIf="password.errors.required">Password required error</div>

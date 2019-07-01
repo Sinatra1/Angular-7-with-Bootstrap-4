@@ -9,13 +9,15 @@ import { AppMenuComponent } from '../modules/auths/menu/app.MenuComponent';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from '../modules/users/edit/edit-user.component';
 import { RegComponent } from '../modules/auths/reg/component/reg.component';
+import { PasswordComplexDirective } from '../modules/users/directives/password-complex.directive';
 
 @NgModule({
   declarations: [
     AppMenuComponent,
     AppLoginComponent,
     EditUserComponent,
-    RegComponent
+    RegComponent,
+    PasswordComplexDirective
   ],
   imports: [
     BrowserModule,
