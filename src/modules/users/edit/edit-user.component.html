@@ -111,8 +111,11 @@
     </div>
   </div>
   -->
-  <div *ngIf="showErrorMessage && editForm.form.valid" class="alert alert-danger alert-error">
+  <div *ngIf="showErrorMessage && editForm.form.valid && !showSuccessMessage" class="alert alert-danger alert-error">
     User with this user name or email already exists
+  </div>
+  <div *ngIf="showSuccessMessage" class="alert alert-success alert-error">
+    User was saved successfully
   </div>
   <div>
     <div class="btn-group form-group">
