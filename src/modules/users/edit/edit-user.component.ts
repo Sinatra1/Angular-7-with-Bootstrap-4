@@ -13,6 +13,7 @@ export class EditUserComponent implements OnInit {
   public passwordTwiceModel: string;
   public showErrorMessage = false;
   public showSuccessMessage = false;
+  public isInProccess = false;
 
   constructor(private userService: UserService) {
   }
@@ -22,15 +23,19 @@ export class EditUserComponent implements OnInit {
   }
 
   public onEdit() {
+    this.isInProccess = true;
     const request = this.userService.create(this.currentItem);
 
     if (!request) {
+      this.isInProccess = false;
       return;
     }
 
     request.subscribe((value => {
+      this.isInProccess = false;
       this.showSuccessMessage = true;
     }), (error => {
+      this.isInProccess = false;
       this.showErrorMessage = true;
     }));
   }

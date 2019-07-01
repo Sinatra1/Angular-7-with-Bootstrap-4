@@ -14,6 +14,7 @@ export class AppLoginComponent implements OnInit {
   public user
   public loginError = false;
   public loginSuccess = false;
+  public isInProccess = false;
 
   constructor(private loginService: LoginService, private authService: AuthService) {
   }
@@ -25,12 +26,15 @@ export class AppLoginComponent implements OnInit {
   public onLogin() {
     this.loginError = false;
     this.loginSuccess = false;
+    this.isInProccess = true;
 
     this.loginService.login(this.user).subscribe((session => {
       this.authService.setAuthorizedState(session);
       this.loginSuccess = true;
+      this.isInProccess = false;
     }), (error => {
       this.loginError = true;
+      this.isInProccess = false;
     }));
   }
 }
