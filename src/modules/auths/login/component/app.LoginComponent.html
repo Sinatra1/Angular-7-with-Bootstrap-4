@@ -40,10 +40,10 @@
         </div>
       </div>
     </div>
-    <div *ngIf="loginError && !loginSuccess" class="alert alert-danger alert-error">
+    <div *ngIf="!!loginError && !loginSuccess" class="alert alert-danger alert-error">
       Login error
     </div>
-    <div *ngIf="loginSuccess" class="alert alert-success alert-error">
+    <div *ngIf="!!loginSuccess" class="alert alert-success alert-error">
       Login success
     </div>
     <div>

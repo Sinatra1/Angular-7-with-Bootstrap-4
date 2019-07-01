@@ -17,11 +17,11 @@ export class EditUserComponent implements OnInit {
   constructor(private userService: UserService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.currentItem = new User();
   }
 
-  onEdit() {
+  public onEdit() {
     const request = this.userService.create(this.currentItem);
 
     if (!request) {

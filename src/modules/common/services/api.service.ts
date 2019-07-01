@@ -14,8 +14,6 @@ export class ApiService {
   protected observableData: Observable<any>;
 
   constructor(private http: HttpClient) {
-    this.subjectData = new ReplaySubject(1);
-    this.observableData = this.subjectData.asObservable();
   }
 
   public post(method: string, data): Observable<any> {
@@ -26,6 +24,10 @@ export class ApiService {
     const url = this.getUrl(method);
     const options = this.getOptions(httpMethod, data);
     const req: Observable<any> = this.http.request(httpMethod, url, options);
+
+    this.subjectData = new ReplaySubject(1);
+    this.observableData = this.subjectData.asObservable();
+
     req.subscribe((value => {
       this.subjectData.next(value);
     }), (error => {

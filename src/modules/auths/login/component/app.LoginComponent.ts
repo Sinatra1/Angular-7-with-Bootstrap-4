@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../users/models/user';
 import { LoginService } from '../services/login.service';
+import {nfapply} from 'q';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,14 @@ export class AppLoginComponent implements OnInit {
   constructor(private loginService: LoginService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.user = new User();
   }
 
-  onLogin() {
+  public onLogin() {
     this.loginError = false;
     this.loginSuccess = false;
+
     this.loginService.login(this.user).subscribe((value => {
       this.loginSuccess = true;
     }), (error => {
