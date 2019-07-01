@@ -10,6 +10,7 @@ import {UserService} from '../services/user.service';
 export class EditUserComponent implements OnInit {
   public minLength = 3;
   public currentItem: User;
+  public passwordTwiceModel: string;
   public showErrorMessage = false;
   public showSuccessMessage = false;
 
@@ -32,5 +33,9 @@ export class EditUserComponent implements OnInit {
     }), (error => {
       this.showErrorMessage = true;
     }));
+  }
+
+  public showPasswordTwiceError(passwordTwice, password): boolean {
+    return !passwordTwice.invalid && !password.invalid && this.passwordTwiceModel !== this.currentItem.password  && (passwordTwice.dirty || passwordTwice.touched);
   }
 }
