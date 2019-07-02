@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Session} from '../models/session';
-import {AppConfig} from '../../../../app/app-config';
+import {AppConfig} from '../../../app/app-config';
 import {CookieService} from 'ngx-cookie-service';
 
 @Injectable({

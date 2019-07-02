@@ -1,0 +1,90 @@
+<div class="my-hide modal-body" ng-class="{'my-untihide': authService.authorized === true}">
+  <div class="my-display-expanded-table form-group">
+    <ol class="breadcrumb">
+      <li>
+        {{titleList}}
+      </li>
+    </ol>
+    <div class="alert alert-success col-md-5 col-sm-12 align-center text-center" ng-show="successMessage">
+      {{successMessage}}
+    </div>
+    <div class="alert alert-danger col-md-5 col-sm-12 align-center text-center" ng-show="errorMessage">
+      {{errorMessage}}
+    </div>
+    <a ng-href="/#/books/edit" title="Create new book" class="btn btn-primary btn-block btn-block-small pull-right">
+      Create new book
+    </a>
+  </div>
+  <div ng-show="items.length > 0">
+    <table class="table table-striped my-table-phone">
+      <thead>
+      <th class="my-column-name max-phone-hide-force">
+        Number
+      </th>
+      <th class="my-column-name max-phone-hide-force">
+        Cover
+      </th>
+      <th class="my-column-name max-phone-hide-force">
+        Name
+      </th>
+      <th class="my-column-name max-phone-hide-force">
+        ISBN
+      </th>
+      <th class="my-column-name max-phone-hide-force">
+        Year
+      </th>
+      <th class="my-column-name max-phone-hide-force">
+        Created date
+      </th>
+      <th class="my-column-huge-text max-phone-hide-force">
+        Description
+      </th>
+      <th colspan="2" class="my-column-id max-phone-hide-force">Actions</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="book in items track by $index">
+        <th class="my-hide">Number</th>
+        <td class="my-column-id">{{$index+1}}</td>
+        <th class="my-hide">Cover</th>
+        <td class="my-column-name">
+          <a >
+            <!--<ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>-->
+          </a>
+        </td>
+        <th class="my-hide">Name</th>
+        <td class="my-column-name">{{book.name}}</td>
+        <th class="my-hide">ISBN</th>
+        <td class="my-column-name">{{book.isbn}}</td>
+        <th class="my-hide">Year</th>
+        <td class="my-column-name">{{book.year}}</td>
+        <th class="my-hide">Created date</th>
+        <td class="my-column-huge-text">{{book.created}}</td>
+        <th class="my-hide">Description</th>
+        <td class="my-column-huge-text">{{book.description}}</td>
+        <th colspan="2" class="my-hide">Actions</th>
+        <td class="my-column-btn">
+          <a class="btn btn-info btn-block-icon" title="View book">
+            <i class="glyphicon glyphicon-list-alt"></i>
+          </a>
+        </td>
+        <td class="my-column-btn">
+          <a class="btn btn-primary btn-block-icon" title="Add to my books">
+            <i class="glyphicon glyphicon-plus"></i>
+          </a>
+          <a class="btn btn-primary btn-block-icon" title="Remove from my books">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form-group">
+    <a class="btn btn-success btn-block">
+      Show more
+    </a>
+  </div>
+  <div class="alert alert-danger col-md-5 col-sm-12 align-center text-center">
+    Book list is empty
+  </div>
+</div>

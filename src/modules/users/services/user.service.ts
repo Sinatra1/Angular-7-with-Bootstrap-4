@@ -8,10 +8,10 @@ import {ApiService} from '../../common/services/api.service';
 })
 
 export class UserService {
-  private urlHash = 'users';
+  public static URL_HASH = 'users';
   constructor(private apiService: ApiService) { }
 
   public create(user: User): Observable<any> {
-    return this.apiService.post(this.urlHash, user);
+    return this.apiService.post(UserService.URL_HASH, user);
   }
 }

@@ -4,13 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { AppLoginComponent } from '../modules/auths/login/component/app.LoginComponent';
-import { AppMenuComponent } from '../modules/auths/menu/app.MenuComponent';
+import { AppLoginComponent } from '../modules/auths/components/login/app.LoginComponent';
+import { AppMenuComponent } from '../modules/auths/components/menu/app.MenuComponent';
 import { HttpClientModule } from '@angular/common/http';
-import { EditUserComponent } from '../modules/users/edit/edit-user.component';
-import { RegComponent } from '../modules/auths/reg/component/reg.component';
+import { EditUserComponent } from '../modules/users/components/edit/edit-user.component';
+import { RegComponent } from '../modules/auths/components/reg/reg.component';
 import { PasswordComplexDirective } from '../modules/users/directives/password-complex.directive';
 import {CookieService} from 'ngx-cookie-service';
+import { ListBooksComponent } from '../modules/books/components/list/list-books.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {CookieService} from 'ngx-cookie-service';
     AppLoginComponent,
     EditUserComponent,
     RegComponent,
-    PasswordComplexDirective
+    PasswordComplexDirective,
+    ListBooksComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import {CookieService} from 'ngx-cookie-service';
     AppMenuComponent,
     AppLoginComponent,
     EditUserComponent,
-    RegComponent
+    RegComponent,
+    ListBooksComponent
   ],
   providers: [
     CookieService

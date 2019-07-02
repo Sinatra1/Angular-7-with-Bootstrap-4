@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../users/models/user';
-import { LoginService } from '../services/login.service';
+import { LoginService } from '../../services/login.service';
 import {nfapply} from 'q';
-import {AuthService} from '../services/auth.service';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
+import {BookService} from '../../../books/services/book.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,10 @@ export class AppLoginComponent implements OnInit {
   public loginSuccess = false;
   public isInProccess = false;
 
-  constructor(private loginService: LoginService, private authService: AuthService) {
+  constructor(
+    public loginService: LoginService,
+    private authService: AuthService,
+    private router: Router) {
   }
 
   public ngOnInit(): void {
@@ -32,6 +37,7 @@ export class AppLoginComponent implements OnInit {
       this.authService.setAuthorizedState(session);
       this.loginSuccess = true;
       this.isInProccess = false;
+      this.router.navigate(['/' + BookService.URL_HASH]);
     }), (error => {
       this.loginError = true;
       this.isInProccess = false;
