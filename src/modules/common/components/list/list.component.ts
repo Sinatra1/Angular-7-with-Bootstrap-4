@@ -13,6 +13,8 @@ export class ListComponent implements OnInit {
   public titleList: string;
   public countItemsTotal = 0;
   public items = [];
+  public successMessage: string;
+  public errorMessage: string;
   protected defaultLimit = 10;
   protected defaultOffset = 0;
   protected searchForm = {

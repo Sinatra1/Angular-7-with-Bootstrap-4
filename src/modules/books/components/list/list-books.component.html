@@ -2,16 +2,16 @@
   <div class="my-display-expanded-table form-group">
     <ol class="breadcrumb">
       <li>
-        {{titleList}}
+        {{getTitleList()}}
       </li>
     </ol>
-    <div class="alert alert-success col-md-5 col-sm-12 align-center text-center" ng-show="successMessage">
+    <div *ngIf="successMessage" class="alert alert-success col-md-5 col-sm-12 align-center text-center">
       {{successMessage}}
     </div>
-    <div class="alert alert-danger col-md-5 col-sm-12 align-center text-center" ng-show="errorMessage">
+    <div *ngIf="errorMessage" class="alert alert-danger col-md-5 col-sm-12 align-center text-center">
       {{errorMessage}}
     </div>
-    <a ng-href="/#/books/edit" title="Create new book" class="btn btn-primary btn-block btn-block-small pull-right">
+    <a title="Create new book" class="btn btn-primary btn-block btn-block-small pull-right">
       Create new book
     </a>
   </div>
