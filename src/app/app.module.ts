@@ -12,6 +12,7 @@ import { RegComponent } from '../modules/auths/components/reg/reg.component';
 import { PasswordComplexDirective } from '../modules/users/directives/password-complex.directive';
 import {CookieService} from 'ngx-cookie-service';
 import { ListBooksComponent } from '../modules/books/components/list/list-books.component';
+import { ListComponent } from '../modules/common/components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListBooksComponent } from '../modules/books/components/list/list-books.
     EditUserComponent,
     RegComponent,
     PasswordComplexDirective,
-    ListBooksComponent
+    ListBooksComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<div class="my-hide modal-body" ng-class="{'my-untihide': authService.authorized === true}">
+<div class="my-hide modal-body" [ngClass]="{'my-untihide': authService.authorized === true}">
   <div class="my-display-expanded-table form-group">
     <ol class="breadcrumb">
       <li>
@@ -15,7 +15,7 @@
       Create new book
     </a>
   </div>
-  <div ng-show="items.length > 0">
+  <div *ngIf="items.length > 0">
     <table class="table table-striped my-table-phone">
       <thead>
       <th class="my-column-name max-phone-hide-force">
@@ -42,9 +42,9 @@
       <th colspan="2" class="my-column-id max-phone-hide-force">Actions</th>
       </thead>
       <tbody>
-      <tr ng-repeat="book in items track by $index">
+      <tr *ngFor="let book of items; trackBy: index; let i = index;">
         <th class="my-hide">Number</th>
-        <td class="my-column-id">{{$index+1}}</td>
+        <td class="my-column-id">{{i+1}}</td>
         <th class="my-hide">Cover</th>
         <td class="my-column-name">
           <a >
@@ -79,12 +79,12 @@
       </tbody>
     </table>
   </div>
-  <div class="form-group">
+  <div *ngIf="countItemsTotal > items.length" class="form-group">
     <a class="btn btn-success btn-block">
       Show more
     </a>
   </div>
-  <div class="alert alert-danger col-md-5 col-sm-12 align-center text-center">
+  <div *ngIf="items.length == 0" class="alert alert-danger col-md-5 col-sm-12 align-center text-center">
     Book list is empty
   </div>
 </div>

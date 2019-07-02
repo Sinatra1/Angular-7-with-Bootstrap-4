@@ -74,13 +74,20 @@ export class AuthService {
     return true;
   }
 
-  protected getSession(): Session {
+  public getSession(): Session {
     if (this.session.access_token) {
       this.authorized = true;
       return this.session;
     }
 
-    this.session = JSON.parse(this.cookieService.get(AuthService.SESSION_KEY_NAME));
+    const sessionJson = this.cookieService.get(AuthService.SESSION_KEY_NAME);
+
+    if (!sessionJson) {
+      this.session = new Session();
+      return this.session;
+    }
+
+    this.session = JSON.parse(sessionJson);
 
     if (typeof this.session !== 'object') {
       this.session = new Session();
