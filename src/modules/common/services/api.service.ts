@@ -18,19 +18,19 @@ export class ApiService implements OnDestroy {
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
-  public post(method: string, data): Observable<any> {
+  public post(method: string, data?): Observable<any> {
     return this.request(ApiService.POST, method, data);
   }
 
-  public put(method: string, data): Observable<any> {
+  public put(method: string, data?): Observable<any> {
     return this.request(ApiService.PUT, method, data);
   }
 
-  public get(method: string, data): Observable<any> {
+  public get(method: string, data?): Observable<any> {
     return this.request(ApiService.GET, method, data);
   }
 
-  public delete(method: string, data): Observable<any> {
+  public delete(method: string, data?): Observable<any> {
     return this.request(ApiService.DELETE, method, data);
   }
 

@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.MenuComponent.scss']
 })
 export class AppMenuComponent implements OnInit {
+
+  constructor(public authService: AuthService, public loginService: LoginService) {
+  }
+
   ngOnInit(): void {
   }
 

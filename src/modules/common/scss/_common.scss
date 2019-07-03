@@ -203,6 +203,14 @@ a, .my-pointer {
     cursor: pointer;
 }
 
+a:not([href]):not([tabindex]).btn {
+  color: $white-color;
+
+  @include hover-focus {
+    color: $white-color;
+  }
+}
+
 $my-container-padding: 50px;
 $my-container-padding-tablet: 20px;
 

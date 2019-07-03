@@ -42,11 +42,15 @@
         @include my-max-phone-hide-force;
 
         width: $menu-button-logout-width;
+
+        a {
+          color: $white-color;
+        }
     }
 
     .menu__language {
         @include my-inline-block;
-        
+
         float: right;
         margin-top: 20px;
 
@@ -54,12 +58,12 @@
             color: $white-color;
             padding: $my-padding-medium;
             margin-left: -40px;
-            
+
             &:focus, &:hover {
                 text-decoration: none;
             }
         }
-        
+
         .dropdown-menu {
             margin-left: -145px;
         }

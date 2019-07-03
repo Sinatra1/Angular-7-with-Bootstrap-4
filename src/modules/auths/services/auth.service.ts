@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Output, EventEmitter} from '@angular/core';
 import {Session} from '../models/session';
 import {AppConfig} from '../../../app/app-config';
 import {CookieService} from 'ngx-cookie-service';
@@ -14,6 +14,8 @@ export class AuthService {
 
   protected session: Session;
   protected authorized: boolean = null;
+  @Output() authorizedEvent = new EventEmitter();
+  @Output() unauthorizedEvent = new EventEmitter();
 
   constructor(private cookieService: CookieService, private router: Router) {
     this.session = new Session();
@@ -26,15 +28,15 @@ export class AuthService {
 
     this.setSession(session);
 
-    /*TODO: if (service.authorized !== true) {
-      $rootScope.$emit('Authorized');
-    }*/
+    if (this.authorized !== true) {
+      this.authorizedEvent.emit();
+    }
   }
 
   public setUnauthorizedState() {
     this.removeSession();
 
-    //TODO: $rootScope.$emit('Unauthorized');
+    this.unauthorizedEvent.emit();
 
     this.router.navigate([AppConfig.PRELOGIN]);
   }
@@ -97,6 +99,7 @@ export class AuthService {
 
     if (this.session.access_token) {
       this.authorized = true;
+      this.authorizedEvent.emit();
     }
 
     return this.session;

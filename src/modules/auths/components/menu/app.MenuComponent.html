@@ -14,23 +14,11 @@
       <a href="#/" class="navbar-brand">Menu title</a>
     </div>
   </div>
-  <ul ng-if="menuVm.authService.isAuth()" class="nav navbar-nav navbar-right menu__button-logout">
+  <ul *ngIf="authService.isAuth()" class="nav navbar-nav navbar-right menu__button-logout">
     <li>
-      <a href="" ng-click="menuVm.loginService.logoutUser()"><i class="glyphicon glyphicon-exit"></i> Sign out</a>
+      <a (click)="loginService.logout()" ng-click="menuVm.loginService.logoutUser()"><i class="glyphicon glyphicon-exit"></i> Sign out</a>
     </li>
   </ul>
-  <div class="menu__language dropdown" uib-dropdown ng-class="{'open': isOpenLanguageMenu}">
-    <a id="menu-language" class="menu__current-language" uib-dropdown-toggle ng-click="menuVm.showLanguageMenu();">
-      Title
-    </a>
-    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="menu-language">
-      <li role="menuitem" ng-repeat="language in menuVm.languageService.languages"
-          ng-click="menuVm.languageService.setCurrentLanguage(language.key)"
-          ng-class="{'active' : menuVm.isActiveLanguageMenuItem(language.key)}">
-        <a>Title</a>
-      </li>
-    </ul>
-  </div>
 </nav>
 
 <router-outlet></router-outlet>
