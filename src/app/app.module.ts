@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppLoginComponent } from '../modules/auths/components/login/app.LoginComponent';
-import { AppMenuComponent } from '../modules/auths/components/menu/app.MenuComponent';
+import { AppMenuComponent } from '../modules/common/components/menu/app.MenuComponent';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from '../modules/users/components/edit/edit-user.component';
 import { RegComponent } from '../modules/auths/components/reg/reg.component';

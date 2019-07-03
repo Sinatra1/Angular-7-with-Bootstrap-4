@@ -42,10 +42,6 @@
         @include my-max-phone-hide-force;
 
         width: $menu-button-logout-width;
-
-        a {
-          color: $white-color;
-        }
     }
 
     .menu__language {

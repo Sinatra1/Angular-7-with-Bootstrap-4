@@ -211,6 +211,14 @@ a:not([href]):not([tabindex]).btn {
   }
 }
 
+a.my-white {
+  color: $white-color !important;
+
+  &:hover, &:focus {
+    color: $white-color !important;
+  }
+}
+
 $my-container-padding: 50px;
 $my-container-padding-tablet: 20px;
 
