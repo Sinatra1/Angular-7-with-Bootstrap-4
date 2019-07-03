@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Session} from '../models/session';
 import {AppConfig} from '../../../app/app-config';
 import {CookieService} from 'ngx-cookie-service';
+import {Router} from '@angular/router';
+import {BookService} from '../../books/services/book.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class AuthService {
   protected session: Session;
   protected authorized: boolean = null;
 
-  constructor(private cookieService: CookieService) {
+  constructor(private cookieService: CookieService, private router: Router) {
     this.session = new Session();
   }
 
@@ -34,7 +36,7 @@ export class AuthService {
 
     //TODO: $rootScope.$emit('Unauthorized');
 
-    top.location.href = AppConfig.PRELOGIN;
+    this.router.navigate([AppConfig.PRELOGIN]);
   }
 
   public isAuth(): boolean {

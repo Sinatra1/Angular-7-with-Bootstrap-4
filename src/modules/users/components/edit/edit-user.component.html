@@ -132,9 +132,9 @@
   </div>
   <div>
     <div class="btn-group form-group">
-      <button [disabled]="!editForm.form.valid || showPasswordTwiceError(passwordTwice, password) || isInProccess"
+      <button [disabled]="!editForm.form.valid || showPasswordTwiceError(passwordTwice, password) || isInProcess"
               type="submit" class="btn btn-primary btn-block btn-block-small">
-        <span *ngIf="isInProccess"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+        <span *ngIf="isInProcess"><i class="glyphicon glyphicon-refresh spinning"></i></span>
         Register
       </button>
     </div>

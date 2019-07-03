@@ -10,7 +10,6 @@ import {Observable} from 'rxjs';
 })
 export class ListComponent implements OnInit {
   public currentItem: Base;
-  public titleList: string;
   public countItemsTotal = 0;
   public items = [];
   public successMessage: string;

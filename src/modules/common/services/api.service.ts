@@ -1,19 +1,19 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {AppConfig} from '../../../app/app-config';
 import {HttpClient} from '@angular/common/http';
-import {Observable, ReplaySubject, Subject} from 'rxjs';
+import {Observable, ReplaySubject, Subject, Subscription} from 'rxjs';
 import {AuthService} from '../../auths/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService implements OnDestroy {
   private static POST = 'POST';
   private static PUT = 'PUT';
   private static GET = 'GET';
   private static DELETE = 'DELETE';
-  protected subjectData: Subject<any>;
-  protected observableData: Observable<any>;
+  private static UNAUTHORIZED_CODE = 401;
+  protected subscriptions: Subscription = new Subscription();
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }
@@ -42,11 +42,16 @@ export class ApiService {
     const subjectData = new ReplaySubject(1);
     const observableData = subjectData.asObservable();
 
-    req.subscribe((value => {
+    this.subscriptions.add(req.subscribe((value => {
       subjectData.next(value);
     }), (error => {
+
+      if (error.status === ApiService.UNAUTHORIZED_CODE) {
+        this.authService.setUnauthorizedState();
+      }
+
       subjectData.error(error);
-    }));
+    })));
 
     return observableData;
   }
@@ -72,5 +77,9 @@ export class ApiService {
   private getUrl(method: string): string {
     const url: string = AppConfig.API_URL + method;
     return url;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

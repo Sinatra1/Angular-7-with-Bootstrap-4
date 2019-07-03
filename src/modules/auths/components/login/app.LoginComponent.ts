@@ -1,27 +1,35 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../../../users/models/user';
-import { LoginService } from '../../services/login.service';
+import {LoginService} from '../../services/login.service';
 import {nfapply} from 'q';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {BookService} from '../../../books/services/book.service';
+import {AppConfig} from '../../../../app/app-config';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.LoginComponent.html',
   styleUrls: ['./app.LoginComponent.scss']
 })
-export class AppLoginComponent implements OnInit {
+export class AppLoginComponent implements OnInit, OnDestroy {
   public minLength = 3;
-  public user
+  public user;
   public loginError = false;
   public loginSuccess = false;
-  public isInProccess = false;
+  public isInProcess = false;
+  protected subscriptions = new Subscription();
 
   constructor(
     public loginService: LoginService,
     private authService: AuthService,
     private router: Router) {
+
+    if (authService.isAuth()) {
+      this.router.navigate(['/' + BookService.URL_HASH]);
+      return;
+    }
   }
 
   public ngOnInit(): void {
@@ -31,16 +39,20 @@ export class AppLoginComponent implements OnInit {
   public onLogin() {
     this.loginError = false;
     this.loginSuccess = false;
-    this.isInProccess = true;
+    this.isInProcess = true;
 
-    this.loginService.login(this.user).subscribe((session => {
+    this.subscriptions.add(this.loginService.login(this.user).subscribe((session => {
       this.authService.setAuthorizedState(session);
       this.loginSuccess = true;
-      this.isInProccess = false;
+      this.isInProcess = false;
       this.router.navigate(['/' + BookService.URL_HASH]);
     }), (error => {
       this.loginError = true;
-      this.isInProccess = false;
-    }));
+      this.isInProcess = false;
+    })));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
